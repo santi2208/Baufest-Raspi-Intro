@@ -1,0 +1,8 @@
+{
+    "SWON":{
+        "functionName":"TurnOnSwitch"
+    },
+	"SWOFF":{
+        "functionName":"TurnOffSwitch"
+	}
+}

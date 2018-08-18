@@ -1,0 +1,62 @@
+ul{
+    list-style-type: none;
+}
+.gpioList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 2em; 
+    color: rgba(55, 57, 67, 0.713);
+}
+
+#bottomElement{
+    vertical-align: bottom;
+    align-content: center;
+}
+
+.topElement{
+    vertical-align: top;
+}
+.gpioList li {
+    float: left;
+}
+
+.redContainer {
+    background: #e98181;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+}
+.greenContainer {
+    background: #5df8b5;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+}
+
+
+.gpioList div strong{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.gpioList div i{
+    position: relative;
+    top:0;
+    left: 0;
+}
+.mainDiv{
+    width: 75%;
+    align-items: center;
+}
+
+.nav-size{
+    font-size: 48 !important;
+}

@@ -1,0 +1,7 @@
+{
+    "SW1":{"gpioPort":"20"},
+    "SW2":{"gpioPort":"21"},
+    "STP1":{"gpioPort":[26, 19,  13, 6]},
+    "LED1":{"gpioPort":"14"},
+    "SRV1":{"gpioPort":"5"}
+}

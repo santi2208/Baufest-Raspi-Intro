@@ -1,0 +1,16 @@
+{
+    "SWON":{"functionName":"TurnOnSwitch"},
+	"SWOFF":{"functionName":"TurnOffSwitch"},
+    "45":{"functionName":"Rotate45"},
+	"90":{"functionName":"Rotate90"},
+	"135":{"functionName":"Rotate135"},
+	"180":{"functionName":"Rotate180"},
+	"225":{"functionName":"Rotate225"},
+	"270":{"functionName":"Rotate270"},
+    "360":{"functionName":"Rotate360"},
+    "Servo_0":{"functionName":"Deg0"},
+	"Servo_90":{"functionName":"Deg90"},
+	"Servo_180":{"functionName":"Deg180" },
+	"Led_On":{"functionName":"LedOn" },
+	"Led_Off":{"functionName":"LedOff" }
+}

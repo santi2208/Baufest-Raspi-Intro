@@ -1,12 +1,13 @@
+import sys
 import time
 from HttpProxy import HttpProxy
 from Achievement import Achievement 
 from GpioReader import GpioReader
 
-class AchievementsWatcher(object):
-    def __init__(self, httpProxy = None):
-        self.httpProxy = httpProxy if httpProxy else HttpProxy('http://192.168.0.15:8888/achievements')
-        self.gpioReader = GpioReader(1)
+class GPIOSsWatcher(object):
+    def __init__(self, teamNumber, httpProxy = None):
+        self.httpProxy = httpProxy if httpProxy else HttpProxy('http://192.168.0.14:8888/achievements')
+        self.gpioReader = GpioReader(teamNumber)
 
     def Main(self):
         lastValues = None
@@ -19,5 +20,5 @@ class AchievementsWatcher(object):
             time.sleep(0.5)          
 
 if __name__ == '__main__':
-    ach = AchievementsWatcher()
-    ach.Main()
+    watcher = GPIOSsWatcher(int(sys.argv[1]))
+    watcher.Main()

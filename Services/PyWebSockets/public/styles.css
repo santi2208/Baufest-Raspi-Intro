@@ -41,6 +41,26 @@ ul{
     margin: 5px;
 }
 
+.greyContainer {
+    background: grey;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+}
+
+.yellowContainer {
+    background: yellow;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+}
+
 
 .gpioList div strong{
     position: relative;

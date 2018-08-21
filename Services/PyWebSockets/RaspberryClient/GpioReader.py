@@ -20,7 +20,7 @@ class GpioReader(object):
         self.teamNumber = teamNumber
     
     def ReadAllOnce(self):
-        gpios = [16, 12, 14, 20, 21, 17, 6, 13, 19, 26, 5,]
+        gpios = [16, 12, 14, 20, 21, 17, 6, 13, 19, 26, 5]
         result = []
         for gNumber in gpios:
             gValue = GPIO.input(gNumber)

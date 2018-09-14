@@ -1,12 +1,13 @@
 import sys
 import time
+import argparse
 from HttpProxy import HttpProxy
 from Achievement import Achievement 
 from GpioReader import GpioReader
 
 class GPIOSsWatcher(object):
-    def __init__(self, teamNumber, httpProxy = None):
-        self.httpProxy = httpProxy if httpProxy else HttpProxy('http://192.168.0.14:8888/achievements')
+    def __init__(self, teamNumber, url):
+        self.httpProxy = HttpProxy(url) #'http://192.168.0.14:8888/achievements'
         self.gpioReader = GpioReader(teamNumber)
 
     def Main(self):
@@ -20,5 +21,10 @@ class GPIOSsWatcher(object):
             time.sleep(0.5)          
 
 if __name__ == '__main__':
-    watcher = GPIOSsWatcher(int(sys.argv[1]))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--team', help='Numero identificatorio de Equipo')
+    parser.add_argument('--url', help='Url a la que se reporta el estado de los componentes')
+    args = parser.parse_args()    
+
+    watcher = GPIOSsWatcher(int(args.team), args.url)
     watcher.Main()

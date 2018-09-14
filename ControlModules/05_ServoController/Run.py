@@ -19,8 +19,6 @@ class MainServoController(object):
 			
 		except (KeyboardInterrupt, SystemExit):
 			raise
-		except:
-			traceback.print_exc()
 		finally:  
 			GPIO.cleanup() 
 

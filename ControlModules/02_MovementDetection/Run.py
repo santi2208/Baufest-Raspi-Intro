@@ -11,8 +11,6 @@ def Main():
 			# time.sleep(3)
 	except (KeyboardInterrupt, SystemExit):
 		raise
-	except:
-		traceback.print_exc()
 	finally:  
 		GPIO.cleanup() 		
 

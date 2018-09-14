@@ -7,11 +7,10 @@ def Main():
 		print("Movement Test Started...")
 		while 1:
 			#Prender Led
-			time.sleep(3)
+			time.sleep(1)
+			#Apagar Led
 	except (KeyboardInterrupt, SystemExit):
 		raise
-	except:
-		traceback.print_exc()
 	finally:  
 		GPIO.cleanup() 		
 

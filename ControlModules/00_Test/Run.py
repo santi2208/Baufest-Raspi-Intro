@@ -37,12 +37,14 @@ class Test(object):
     def TestLed(self, gpioPort):
         GPIO.setup(gpioPort, GPIO.OUT) 
         GPIO.output(gpioPort, GPIO.HIGH)
-        time.sleep(5)
+        time.sleep(2)
         GPIO.output(gpioPort, GPIO.LOW)
     
     def TestServo(self, gpioPort):
         self.Deg0(gpioPort)
-        time.sleep(5)
+        time.sleep(1)
+        self.Deg90(gpioPort)
+        time.sleep(1)
         self.Deg180(gpioPort)
     
     def TestDistancia(self, trigger, echo):
@@ -74,7 +76,7 @@ class Test(object):
     def TestRelay(self, gpioPort):
         GPIO.setup(gpioPort, GPIO.OUT)
         GPIO.output(gpioPort, GPIO.HIGH)
-        time.sleep(5)
+        time.sleep(2)
         GPIO.output(gpioPort, GPIO.LOW)
 
     def Deg0(self, gpioPort):
@@ -84,6 +86,15 @@ class Test(object):
         pwm.start(7.5)	
         pwm.ChangeDutyCycle(12.5) 
         time.sleep(0.60)	
+        pwm.stop()
+	
+    def Deg90(self, gpioPort):
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(gpioPort,GPIO.OUT)
+        pwm = GPIO.PWM(gpioPort,50) 
+        pwm.start(7.5)	
+        pwm.ChangeDutyCycle(7.5)
+        time.sleep(0.60)			
         pwm.stop()
 
     def Deg180(self, gpioPort):

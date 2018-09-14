@@ -2,13 +2,13 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BCM)
 
+ledRojo = 14
+ledAmarillo = 12 
+ledVerde = 16
+
 def Main():
 	try:
-		print("Movement Test Started...")
-		while 1:
-			#Prender Led
-			time.sleep(1)
-			#Apagar Led
+		#COMPLETAR
 	except (KeyboardInterrupt, SystemExit):
 		raise
 	finally:  

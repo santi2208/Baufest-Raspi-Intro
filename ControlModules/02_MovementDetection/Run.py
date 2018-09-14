@@ -2,13 +2,12 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BCM)
 
+port = 17
+
 def Main():
 	try:
-		print("Movement Test Started...")
-		while 1:
-	
-			# print("Se movio algo.")
-			# time.sleep(3)
+		print("Movemente Test Started")
+		#COMPLETAR
 	except (KeyboardInterrupt, SystemExit):
 		raise
 	finally:  

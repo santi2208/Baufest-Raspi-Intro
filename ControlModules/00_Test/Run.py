@@ -47,9 +47,9 @@ class Test(object):
     
     def TestDistancia(self, trigger, echo):
         try:
-            distanceActions = DistanceActions()
+            distanceActions = DistanceActions(trigger, echo)
             while 1:
-                distance = distanceActions.TakeDistance(echo,trigger)
+                distance = distanceActions.TakeDistance()
                 print(distance)
                 time.sleep(0.3)
         except (KeyboardInterrupt, SystemExit):
@@ -62,10 +62,10 @@ class Test(object):
             print("Movemente Test Started")
             GPIO.setup(gpioPort, GPIO.IN) 
             while True:
-                moved = self.DetectMovementOnce(gpioPort)
-                if(moved):
-                    print("Se movio algo.")
-                    time.sleep(3)
+                i = GPIO.input(gpioPort)
+                print(i)
+                time.sleep(0.3)
+
         except (KeyboardInterrupt, SystemExit):
             raise
         finally:  

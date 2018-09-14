@@ -2,19 +2,18 @@ import time
 import sys
 from DistanceActions import *
 
+trigger = 24
+echo = 23
+
 def Main():
 	try:
-		trigger = int(sys.argv[1])
-		echo = int(sys.argv[2])
-		distanceActions = DistanceActions()
+		distanceActions = DistanceActions(trigger, echo)
 		while 1:
-			distance = distanceActions.TakeDistance(echo,trigger)
+			distance = distanceActions.TakeDistance()
 			print(distance)
 			time.sleep(0.3)
 	except (KeyboardInterrupt, SystemExit):
 		raise
-	except:
-		traceback.print_exc()
 	finally:  
 		GPIO.cleanup() 
 		

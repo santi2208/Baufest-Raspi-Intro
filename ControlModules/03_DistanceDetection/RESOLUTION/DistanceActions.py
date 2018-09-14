@@ -4,28 +4,32 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 class DistanceActions(object):
-	def TakeDistanceOnce(self, gpioEcho, gpioTrigger):
+	def __init__(self, gpioEcho, gpioTrigger):
+		self.Echo = gpioEcho
+		self.Trigger = gpioTrigger
 		GPIO.setup(gpioTrigger, GPIO.OUT)
 		GPIO.setup(gpioEcho, GPIO.IN)
-		return self.TakeDistance(gpioTrigger, gpioEcho)
+
+	def TakeDistanceOnce(self):
+		return self.TakeDistance(self.Trigger, self.Echo)
 	
-	def TakeDistance(self, GPIO_TRIGGER, GPIO_ECHO):
+	def TakeDistance(self):
 		# set Trigger to HIGH
-		GPIO.output(GPIO_TRIGGER, True)
+		GPIO.output(self.Trigger, True)
 	 
 		# set Trigger after 0.01ms to LOW
 		time.sleep(0.00001)
-		GPIO.output(GPIO_TRIGGER, False)
+		GPIO.output(self.Trigger, False)
 	 
 		StartTime = time.time()
 		StopTime = time.time()
 	 
 		# save StartTime
-		while GPIO.input(GPIO_ECHO) == 0:
+		while GPIO.input(self.Echo) == 0:
 			StartTime = time.time()
 	 
 		# save time of arrival
-		while GPIO.input(GPIO_ECHO) == 1:
+		while GPIO.input(self.Echo) == 1:
 			StopTime = time.time()
 	 
 		# time difference between start and arrival

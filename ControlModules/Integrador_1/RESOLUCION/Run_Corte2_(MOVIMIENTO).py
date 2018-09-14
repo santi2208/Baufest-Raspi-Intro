@@ -4,12 +4,16 @@ import time
 ledRojo = 14
 ledAmarillo = 12 
 ledVerde = 16
+move = 17
+relayPort = 20
+
 GPIO.setmode(GPIO.BCM)
+
 GPIO.setup(ledRojo, GPIO.OUT)
 GPIO.setup(ledAmarillo, GPIO.OUT)
 GPIO.setup(ledVerde, GPIO.OUT)
-move = 17
 GPIO.setup(move, GPIO.IN) 
+GPIO.setup(relayPort, GPIO.OUT) 
 
 def DetectMovementOnce():
     while True:
@@ -27,10 +31,12 @@ def Main():
                 GPIO.output(ledRojo, GPIO.HIGH)
                 GPIO.output(ledAmarillo, GPIO.HIGH)
                 GPIO.output(ledVerde, GPIO.HIGH)
+                GPIO.output(relayPort, GPIO.HIGH)
                 time.sleep(3)
             GPIO.output(ledRojo, GPIO.LOW)    
             GPIO.output(ledAmarillo, GPIO.LOW)
             GPIO.output(ledVerde, GPIO.LOW)
+            GPIO.output(relayPort, GPIO.LOW)
     except (KeyboardInterrupt, SystemExit):
         raise
     finally:  

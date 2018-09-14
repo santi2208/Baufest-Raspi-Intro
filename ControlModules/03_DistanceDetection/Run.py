@@ -1,13 +1,13 @@
 import time
 import sys
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
+from DistanceActions import *
 
-relayPort = 20
+trigger = 24
+echo = 23
 
 def Main():
     try:
-		#COMPLETAR
+        #COMPLETAR
     except (KeyboardInterrupt, SystemExit):
         raise
     finally:  

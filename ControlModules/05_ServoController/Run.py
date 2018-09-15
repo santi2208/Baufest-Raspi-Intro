@@ -1,28 +1,31 @@
 import sys
-sys.path.append('../../Services/UDPService/')
-from UDPService import *
-from CommandConstants import GetActionName
-from CommandConstants import GetGpioPort
-from ServoActions import *
+import time
+import RPi.GPIO as GPIO
 
-class MainServoController(object):
-	def __init__(self, udpService = None):
-		if udpService:
-    			self.udpService = udpService
-		else:	
-			self.udpService = UDPService()
-	
-	def RunServoService(self, portNumber, host = None):
-		try:
-			print("Servo Controller running...")
-			while 1:
-			
-		except (KeyboardInterrupt, SystemExit):
-			raise
-		finally:  
-			GPIO.cleanup() 
+servo = 5
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servo,GPIO.OUT)
 
-if __name__ == '__main__':
-	port = int(sys.argv[1])
-	mainServoController = MainServoController()
-	mainServoController.RunServoService(port, sys.argv[2] if len(sys.argv) > 1 else None)
+def Main():
+	try:
+		print("Servo Controller running...")
+		Deg0(servo)
+		time.sleep(1)
+		Deg90(servo)
+		time.sleep(1)
+		Deg180(servo)
+	except (KeyboardInterrupt, SystemExit):
+		raise
+	finally:  
+		GPIO.cleanup() 
+
+def Deg0(gpioPort):
+	#COMPLETAR
+
+def Deg90(gpioPort):
+	#COMPLETAR
+
+def Deg180(gpioPort):
+	#COMPLETAR
+
+Main()

@@ -6,14 +6,16 @@ from Achievement import Achievement
 from GpioReader import GpioReader
 
 class GPIOSsWatcher(object):
-    def __init__(self, teamNumber, url):
-        self.httpProxy = HttpProxy(url) #'http://192.168.0.14:8888/achievements'
+    def __init__(self, teamNumber, sIp, invertirSwitch):
+        self.httpProxy = HttpProxy("http://{}:8888/achievements".format(sIp))
         self.gpioReader = GpioReader(teamNumber)
-
+        self.invertirSwitch = False if (invertirSwitch is None or invertirSwitch == "0") else True
+        print(self.invertirSwitch)
+        
     def Main(self):
         lastValues = None
         while  1:
-            gpiosRes = self.gpioReader.ReadAllOnce() #[[2,10,1],[2,11,1]]
+            gpiosRes = self.gpioReader.ReadAllOnce(self.invertirSwitch) #[[2,10,1],[2,11,1]]
             if(lastValues != gpiosRes):
                 print (gpiosRes)
                 self.httpProxy.InformGpioStatus(gpiosRes)
@@ -23,8 +25,9 @@ class GPIOSsWatcher(object):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--team', help='Numero identificatorio de Equipo')
-    parser.add_argument('--url', help='Url a la que se reporta el estado de los componentes')
+    parser.add_argument('--sIp', help='Ip del servidor.')
+    parser.add_argument('--inv', help='Invertir Estado del Relay - 0: NO | 1: Si. Default: NO')
     args = parser.parse_args()    
 
-    watcher = GPIOSsWatcher(int(args.team), args.url)
+    watcher = GPIOSsWatcher(int(args.team), args.sIp, args.inv)
     watcher.Main()
